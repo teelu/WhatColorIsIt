@@ -5,6 +5,7 @@ $(document).ready(function () {
   var alarmHours = 25;
   var alarmMinutes = 61;
   var resetFlag = false;
+  var snoozeFlag = false;
   var alarmMeridiem = "";
 
   var populateHours = function () {
@@ -39,8 +40,9 @@ $(document).ready(function () {
     var colorSeconds = seconds*4;
     var colorMinutes = minutes*4;
     var colorHours = hours*10;
-    $('body').css({ "background-color": "rgba(" + colorHours + ", " + colorMinutes + ", " +  colorSeconds + ",1.0)"});
+    $('body').css({ "background-color": "rgb(" + colorHours + ", " + colorMinutes + ", " +  colorSeconds});
     checkTime();
+    $('#current-color').html('rgb(' + colorHours + ',' + colorMinutes + ',' + colorSeconds + ')');
   }
 
   var appendZeroTime = function (number) {
@@ -76,10 +78,11 @@ $(document).ready(function () {
     alarmHours = $('#alarm-hour').val();
     alarmMinutes = $('#alarm-minute').val(); 
     alarmMeridiem = $('#alarm-meridiem').val();
-    if (alarmMeridiem==='pm' && alarmHours > 12) {
+    if (alarmMeridiem==='pm' && alarmHours === '12') {
+      alarmHours = 12;
+    } else if (alarmMeridiem==='pm') {
       alarmHours = Number(alarmHours) + 12;
-    }
-    if (alarmMeridiem==='am' && alarmHours ==='12') {
+    } else if (alarmMeridiem==='am' && alarmHours ==='12') {
       alarmHours = 0;
     }
     console.log(alarmHours + ':' + alarmMinutes + alarmMeridiem);
@@ -89,6 +92,19 @@ $(document).ready(function () {
     myAudio.pause();
     resetFlag = true;
     $('#alarm-settings').slideUp();
+  });
+
+  $(document).on('click', '#snooze', function() {
+    alarmMinutes = Number(minutes)+15;
+    console.log(alarmMinutes);
+    $('#alarm-settings').slideUp();
+    if (snoozeFlag===false) {
+      myAudio.pause();
+      snoozeFlag = true;
+    } else {
+      window.alert('GET UP, NO MORE SNOOZE')
+    }
+
   });
 
   updateTime();

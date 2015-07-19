@@ -8,7 +8,8 @@ select {
   text-align: right;
 }
 
-option {
+p {
+  font-size: 2vw;
 }
 
 .form-control {
@@ -44,5 +45,12 @@ option {
     margin-left: auto;
     margin-right: auto; 
     background-color: rgba(255,255,255,0.3);
+}
+
+.bottom {
+  position: absolute;
+  bottom: 0px;
+  right: 1vw;
+  float:right;
 }
 
