@@ -1,0 +1,48 @@
+h1 {
+  font-size: 10vw;
+}
+
+select {
+  position:relative;
+  max-width:75px;
+  text-align: right;
+}
+
+option {
+}
+
+.form-control {
+  display: inline;
+}
+
+#meridiem {
+  font-size: 3vw;
+}
+
+#alarm-settings {
+  margin: 10px 0;
+  display:none;
+}
+
+#alarm-settings button {
+  min-width: 100px;
+}
+
+.outer {
+    display: table;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+.middle {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.inner {
+    margin-left: auto;
+    margin-right: auto; 
+    background-color: rgba(255,255,255,0.3);
+}
+
